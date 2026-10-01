@@ -28,6 +28,8 @@ GitHubでコードを管理し、Issue→ブランチ→実装とテスト→PR�
 
 役割分担と一つの機能を進める手順は[WORKFLOW.md](WORKFLOW.md)に記載する。一つの会話のAIが業務担当者役とテックリード役を順に担当し、ユーザーが作るものと学習の方向を決める運用とする。
 
+最初の機能について、[蔵書一覧の仕様案](specs/catalog-list.md)、[テスト方針](TESTING.md)、[実装Issueの計画](IMPLEMENTATION_PLAN.md)を具体化した。APIテストとOracle結合テストを分け、各実装Issueに必要な検証を含める。これらは実装前の案であり、着手するIssueで採用範囲を確認する。
+
 ## 1. 学習目標
 
 AG GridのLayout・Filter、C#の基礎、OracleへのSQLアクセスを、実装と検証を通して理解する。
@@ -491,7 +493,7 @@ AIレビューは開発者の理解・テスト・受入確認を置き換えな
 | 段階 | ゴール |
 |---|---|
 | M0 | リポジトリの土台、IDE／SDK確認、APIとBatchの最小ビルド、Oracle起動確認 |
-| M1 | Oracle→C# API→AG Gridの蔵書一覧を一巡。貸出可否による絞り込みを一つ通す |
+| M1 | Oracle→C# API→AG Gridの蔵書一覧を一巡。初回の仕様案では全件取得後に画面で貸出可否を絞り込む |
 | M2 | Layout、Set／Multi Filter、Tool Panel、保存復元を検証 |
 | M3 | 限定したSSRMの検索・ソート・取得範囲をOracleへつなぐ |
 | M4 | 最小の認証・認可と、蔵書選択→貸出→返却のフローを実装 |

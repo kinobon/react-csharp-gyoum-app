@@ -30,6 +30,8 @@ Cronos、常駐Worker、タスクスケジューラ設定、本番デプロイ�
 
 変更前に対象Issue、既存コード、package.json、csproj、solution、テストと設定を確認する。実装済み範囲・起動手順・成功結果を推測で作らない。ユーザーの既存変更を無断で取り消さない。
 
+最初の蔵書一覧は[docs/specs/catalog-list.md](docs/specs/catalog-list.md)、テストの分担は[docs/TESTING.md](docs/TESTING.md)、Issueの対応は[docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md)を参照する。仕様案の採用範囲は対象Issueで確認し、動作の受入条件と設計例を区別する。
+
 一つの確認可能な機能を小さな変更単位にし、実装とテストを組み合わせる。新旧C#を比較するためだけに業務ロジックを二重実装しない。高度な文法を使うためだけの機能を増やさない。
 
 build／lint／testなどのコマンドは実物から確認する。`npm test`等の未定義スクリプトをあるものとして扱わない。実行したコマンド・結果と、未実行の検証を分けて報告する。Oracle結合テストが未実行なら、その事実と不足する確認を記載する。
