@@ -44,6 +44,7 @@ AG GridのLayout・Filter、C#の基礎、OracleへのSQLアクセスを、実�
 | 現方針 | 開発フロー | GitHub、テストコード、PR、Codexレビューを取り入れる |
 | 暫定構成 | 実行基盤 | 各バックエンドプロジェクトを.NET 10にそろえる |
 | 暫定構成 | フロント | Vite＋React＋TypeScript。Next.js固有機能は対象にしない |
+| 採用済み | ルーティング | TanStack Routerのファイルベースルーティング。現在のモック画面を`/`に接続し、業務画面は今後追加する |
 | 暫定構成 | DB環境 | Oracle Database FreeのDockerコンテナをローカル利用 |
 | 暫定構成 | 接続 | ODP.NET Coreを直接使用。EF Coreは必須にしない |
 | 暫定構成 | コード配置 | apps/frontend／apps/backend／db／docsを持つモノリポ |
