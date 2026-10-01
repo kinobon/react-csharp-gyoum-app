@@ -44,12 +44,12 @@ docker compose up -d
 
 Windows上のDBクライアントから接続する場合の設定です。
 
-| 項目 | 値 |
-|---|---|
-| ホスト | `localhost` |
-| ポート | `1521` |
-| サービス名 | `FREEPDB1` |
-| 管理用ユーザー | `PDBADMIN` |
+| 項目             | 値          |
+| ---------------- | ----------- |
+| ホスト           | `localhost` |
+| ポート           | `1521`      |
+| サービス名       | `FREEPDB1`  |
+| 管理用ユーザー   | `PDBADMIN`  |
 | 開発用パスワード | `Password1` |
 
 `FREEPDB1`は、Oracle Freeイメージが用意するPDBの名前です。アプリ専用のDBユーザーは今後作成予定です。
@@ -62,8 +62,8 @@ docker compose down
 
 ## 構成
 
-| パス | 内容 |
-|---|---|
+| パス             | 内容                                                 |
+| ---------------- | ---------------------------------------------------- |
 | `apps/frontend/` | Vite・React・TypeScript・Ant Design・AG Gridの仮画面 |
-| `apps/backend/` | ASP.NET Core Web APIの雛形 |
-| `compose.yaml` | Oracle Database Freeの開発環境 |
+| `apps/backend/`  | ASP.NET Core Web APIの雛形                           |
+| `compose.yaml`   | Oracle Database Freeの開発環境                       |
