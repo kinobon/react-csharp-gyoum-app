@@ -4,6 +4,8 @@ AG Grid・C#・Oracleを使い、工場向け部品仕様の改訂・承認管�
 
 現在は、架空のデータを使ったフロントエンドの仮画面と、Oracle Database Freeの開発環境を用意しています。API・DBとの連携、編集・承認、バッチ処理は今後実装予定です。
 
+![alt text](docs/assets/image.png)
+
 ## 前提条件
 
 - Node.js：24以上
