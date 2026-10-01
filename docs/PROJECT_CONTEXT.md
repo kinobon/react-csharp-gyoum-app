@@ -38,7 +38,7 @@ AG GridのLayout・Filter、C#の基礎、OracleへのSQLアクセスを、実�
 | 暫定構成 | フロント | Vite＋React＋TypeScript。Next.js固有機能は対象にしない |
 | 暫定構成 | DB環境 | Oracle Database FreeのDockerコンテナをローカル利用 |
 | 暫定構成 | 接続 | ODP.NET Coreを直接使用。EF Coreは必須にしない |
-| 暫定構成 | コード配置 | frontend／backend／db／docsを持つモノリポ |
+| 暫定構成 | コード配置 | apps/frontend／apps/backend／db／docsを持つモノリポ |
 | 暫定題材 | 業務アプリ | 工場向け部品仕様の改訂・承認・適用管理 |
 | 要選定 | 認証・テスト等 | 認証方式、テストライブラリ、パッケージの正確なバージョン、CIのDB実行方式 |
 
@@ -346,17 +346,18 @@ xUnitは候補であり、導入バージョンや最終選択は未確定。ASP
 ### 10.1 モノリポの配置案
 
 ```text
-factory-design-training/
-├─ frontend/
-├─ backend/
-│  ├─ FactoryTraining.sln
-│  ├─ src/
-│  │  ├─ FactoryTraining.Api/
-│  │  ├─ FactoryTraining.Application/
-│  │  ├─ FactoryTraining.Domain/
-│  │  ├─ FactoryTraining.Infrastructure/
-│  │  └─ FactoryTraining.Batch/
-│  └─ tests/
+react-csharp-gyoum-app/
+├─ apps/
+│  ├─ frontend/
+│  └─ backend/
+│     ├─ FactoryTraining.sln
+│     ├─ src/
+│     │  ├─ FactoryTraining.Api/
+│     │  ├─ FactoryTraining.Application/
+│     │  ├─ FactoryTraining.Domain/
+│     │  ├─ FactoryTraining.Infrastructure/
+│     │  └─ FactoryTraining.Batch/
+│     └─ tests/
 ├─ db/
 │  ├─ migrations/
 │  └─ seed/
@@ -398,7 +399,7 @@ Api／Batchは入口としてApplicationを呼び、InfrastructureをDIへ登録
 READMEには作業ディレクトリと対象プロジェクトを明記する。例えばバッチ起動は、上記構成を採用・作成した後なら次の形を想定する。
 
 ```sh
-dotnet run --project backend/src/FactoryTraining.Batch/FactoryTraining.Batch.csproj
+dotnet run --project apps/backend/src/FactoryTraining.Batch/FactoryTraining.Batch.csproj
 ```
 
 起動方法は実物で検証してから確定する。接続先、ポート、環境変数、DB準備手順、テストコマンドを未確認のまま「実行済み」と書かない。

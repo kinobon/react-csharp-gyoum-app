@@ -31,7 +31,7 @@ Cronos、常駐Worker、タスクスケジューラ設定、本番デプロイ�
 
 build／lint／testなどのコマンドは実物から確認する。`npm test`等の未定義スクリプトをあるものとして扱わない。実行したコマンド・結果と、未実行の検証を分けて報告する。Oracle結合テストが未実行なら、その事実と不足する確認を記載する。
 
-Ant Designの参照CLIは`frontend`のdevDependencyとして管理し、`frontend`で`pnpm exec antd ...`を使う。`antd`スキル内にグローバル導入例があっても、このプロジェクトではローカル版を使い、グローバルには追加しない。
+Ant Designの参照CLIは`apps/frontend`のdevDependencyとして管理し、`apps/frontend`で`pnpm exec antd ...`を使う。`antd`スキル内にグローバル導入例があっても、このプロジェクトではローカル版を使い、グローバルには追加しない。
 
 GitHubや外部サービスへの公開、リモートへの書き込み、破壊的DB操作は、ユーザーの指示と会社のルールの範囲内で行う。パスワード・接続資格情報・実データを追加しない。Enterpriseの評価表示を非公式な手段で消さない。
 

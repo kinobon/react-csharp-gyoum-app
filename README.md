@@ -21,7 +21,7 @@ AG Grid・C#・Oracleを使い、工場向け部品仕様の改訂・承認管�
 リポジトリのルートから実行します。
 
 ```powershell
-cd frontend
+cd apps/frontend
 pnpm install --frozen-lockfile
 pnpm dev
 ```
@@ -64,6 +64,6 @@ docker compose down
 
 | パス | 内容 |
 |---|---|
-| `frontend/` | Vite・React・TypeScript・Ant Design・AG Gridの仮画面 |
-| `backend/` | ASP.NET Core Web APIの雛形 |
+| `apps/frontend/` | Vite・React・TypeScript・Ant Design・AG Gridの仮画面 |
+| `apps/backend/` | ASP.NET Core Web APIの雛形 |
 | `compose.yaml` | Oracle Database Freeの開発環境 |
