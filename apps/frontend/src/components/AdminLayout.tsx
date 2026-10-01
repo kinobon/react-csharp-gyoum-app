@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Link } from "@tanstack/react-router";
 import { Breadcrumb, Card, Flex, Layout, Menu, Tag, Typography } from "antd";
 import { mockRevisions, statusCount } from "../parts/mockRevisions";
 import type { StatusView } from "../parts/model";
@@ -37,7 +38,10 @@ export function AdminLayout({ statusView, onStatusChange, children }: AdminLayou
           <Flex vertical gap="large">
             <Flex justify="space-between" align="center" wrap gap="small">
               <Breadcrumb items={[{ title: "ワークスペース" }, { title: "部品・改訂一覧" }]} />
-              <Tag>モック環境</Tag>
+              <Flex align="center" gap="small">
+                <Link to="/weather">天気予報サンプル</Link>
+                <Tag>モック環境</Tag>
+              </Flex>
             </Flex>
             {children}
           </Flex>

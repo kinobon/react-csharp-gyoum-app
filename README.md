@@ -2,7 +2,7 @@
 
 AG Grid・C#・Oracleを使い、図書館の蔵書・貸出管理を題材にした業務アプリを作成しています。実物の本がある前提で、蔵書検索・貸出・返却を扱う方針です。
 
-現在は、旧題材である部品・改訂管理のモック画面、ASP.NET Core Web APIの雛形、Oracle Database Freeの開発環境を用意しています。図書館向けの画面・業務処理、API・DBとの連携は今後実装予定です。
+現在は、旧題材である部品・改訂管理のモック画面、ASP.NET Core Web API、Oracle Database Freeの開発環境を用意しています。`/weather`には、Orvalで生成したクライアントから既存APIへ接続する天気予報サンプルがあります。図書館向けの画面・業務処理、Oracleとの連携は今後実装予定です。
 
 予約、購入希望の申請・承認、延滞確認のバッチは追加候補です。学習方針と未確定事項は[PROJECT_CONTEXT.md](docs/PROJECT_CONTEXT.md)にまとめています。
 
@@ -16,6 +16,7 @@ AG Grid・C#・Oracleを使い、図書館の蔵書・貸出管理を題材に�
 
 - Node.js：24以上
 - pnpm
+- .NET 10 SDK（APIを起動する場合）
 - Docker CLI・Docker Composeが利用できる環境
   - 現在はWindows 11のRancher Desktopで、コンテナエンジンに`dockerd (moby)`を使用しています。
   - Oracleを起動する前にRancher Desktopを起動してください。
@@ -36,11 +37,24 @@ pnpm dev
 
 ### バックエンド
 
-🚧
+リポジトリのルートで実行します。
+
+```powershell
+dotnet run --project apps/backend/FactoryTraining/FactoryTraining.Api --launch-profile http
+```
+
+APIは`http://localhost:5199`で起動します。フロントと同時に起動し、`/weather`を開くと天気予報サンプルを確認できます。
+OpenAPI定義は開発環境の`http://localhost:5199/openapi/v1.json`で取得できます。
+クライアントの生成手順は[フロントのREADME](apps/frontend/README.md)を参照してください。
+
+APIは`net10.0`／C# 7.3でビルドします。C# 7.3と互換性のないコードを生成するOpenAPIのXMLコメント用Source Generatorだけを除外しています。
+実行時のOpenAPI定義出力は有効です。設定の根拠は[Microsoft公式の無効化手順](https://learn.microsoft.com/en-us/aspnet/core/fundamentals/openapi/openapi-comments?view=aspnetcore-10.0#disabling-xml-documentation-support)を参照してください。
+
+HTTP専用プロファイルでは、HTTPS転送先が未設定という警告が出る場合があります。この起動方法でローカルのHTTP API接続を確認しています。
 
 ### データベース
 
-※フロントエンドは現在モックデータで動作するため、Oracleを起動せずに画面を確認できます。
+※部品・改訂画面はモックデータ、天気予報画面はDBを使わないAPIで動作するため、どちらもOracleの起動は不要です。
 
 リポジトリのルートで実行します。
 

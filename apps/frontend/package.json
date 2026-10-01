@@ -5,6 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "api:pull": "node scripts/pull-openapi.mjs",
+    "api:generate": "orval",
+    "api:update": "pnpm api:pull && pnpm api:generate",
+    "test:api": "node --test scripts/weather-api.test.mjs",
     "routes:generate": "tsr generate",
     "build": "pnpm routes:generate && tsc -b && vite build",
     "lint": "oxlint",
@@ -35,6 +39,7 @@
     "@types/react-dom": "^19.2.7",
     "@vitejs/plugin-react": "^6.1.1",
     "babel-plugin-react-compiler": "^1.0.0",
+    "orval": "^8.39.0",
     "oxfmt": "^0.71.0",
     "oxlint": "^1.81.0",
     "typescript": "~6.0.2",

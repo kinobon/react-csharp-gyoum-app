@@ -14,7 +14,7 @@
 
 **今回決めたのは題材と、実物の本を扱う前提。** 貸出期間・冊数上限・予約の運用などは未確定。予約や購入希望の申請・承認は追加候補とし、以下の詳細は学習用の暫定案として扱う。
 
-2026-10-01時点のフロントエンドは、旧題材の部品・改訂一覧を使ったモック画面。バックエンドはASP.NET Core Web APIの雛形で、図書館の業務処理・APIとOracleの連携は未実装。文書の題材変更と画面の実装状況を区別する。
+2026-10-01時点のフロントエンドは、旧題材の部品・改訂一覧を使ったモック画面と、`/weather`の天気予報API接続サンプル。既存のWeatherForecastControllerのOpenAPIからOrvalで型・取得関数・TanStack Queryフックを生成し、`features/weather`の画面で利用する。APIはnet10.0／C# 7.3を設定済み。図書館の業務処理・APIとOracleの連携は未実装。文書の題材変更と画面の実装状況を区別する。
 
 図書館の業務をAIが単独で整理した資料として、[イベントストーミング](modeling/event-storming.md)と[ドメインモデル](modeling/domain-model.md)を作成した。書籍・実物の一冊・一回の貸出を分け、貸出・返却・延滞確認の流れを扱う。資料内の仮定A-01〜A-06、ホットスポットH-01〜H-07、集約案は設計候補であり、業務要件の採用や実装完了を表さない。
 
@@ -45,6 +45,8 @@ AG GridのLayout・Filter、C#の基礎、OracleへのSQLアクセスを、実�
 | 暫定構成 | 実行基盤 | 各バックエンドプロジェクトを.NET 10にそろえる |
 | 暫定構成 | フロント | Vite＋React＋TypeScript。Next.js固有機能は対象にしない |
 | 採用済み | ルーティング | TanStack Routerのファイルベースルーティング。現在のモック画面を`/`に接続し、業務画面は今後追加する |
+| 採用済み | APIクライアント生成 | ASP.NET CoreのOpenAPIからOrvalで型・fetch関数・TanStack Queryフックを生成。`/weather`で接続を実装。生成物はGit管理し、更新・起動手順はフロントのREADMEを参照 |
+| 採用済み | フロントの機能配置 | 新規の天気予報サンプルを`features/weather`に配置。ルート・データ取得の接続・UIを分け、既存の旧題材は段階的に整理する |
 | 暫定構成 | DB環境 | Oracle Database FreeのDockerコンテナをローカル利用 |
 | 暫定構成 | 接続 | ODP.NET Coreを直接使用。EF Coreは必須にしない |
 | 暫定構成 | コード配置 | apps/frontend／apps/backend／db／docsを持つモノリポ |
