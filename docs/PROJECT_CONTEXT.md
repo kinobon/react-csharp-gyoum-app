@@ -30,6 +30,8 @@ GitHubでコードを管理し、Issue→ブランチ→実装とテスト→PR�
 
 最初の機能について、[蔵書一覧の仕様案](specs/catalog-list.md)、[テスト方針](TESTING.md)、[実装Issueの計画](IMPLEMENTATION_PLAN.md)を具体化した。APIテストとOracle結合テストを分け、各実装Issueに必要な検証を含める。これらは実装前の案であり、着手するIssueで採用範囲を確認する。
 
+フロントの着手順は、既存のWeather画面のAG Grid化（[Issue #5](https://github.com/kinobon/react-csharp-gyoum-app/issues/5)）を先にする。表示・取得失敗・再試行を具体例で定め、少数のブラウザテストとともに実装する計画。以降も前提・操作・期待結果をIssueに記載し、機能ごとに進める。これは計画の更新であり、WeatherのAG Grid化やテスト実装の完了を示さない。
+
 ## 1. 学習目標
 
 AG GridのLayout・Filter、C#の基礎、OracleへのSQLアクセスを、実装と検証を通して理解する。
