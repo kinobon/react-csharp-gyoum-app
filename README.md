@@ -1,10 +1,16 @@
 # 🚧 React・C#・Oracle 学習用アプリ
 
-AG Grid・C#・Oracleを使い、工場向け部品仕様の改訂・承認管理を題材にした業務アプリを作成しています。
+AG Grid・C#・Oracleを使い、図書館の蔵書・貸出管理を題材にした業務アプリを作成しています。実物の本がある前提で、蔵書検索・貸出・返却を扱う方針です。
 
-現在は、架空のデータを使ったフロントエンドの仮画面と、Oracle Database Freeの開発環境を用意しています。API・DBとの連携、編集・承認、バッチ処理は今後実装予定です。
+現在は、旧題材である部品・改訂管理のモック画面、ASP.NET Core Web APIの雛形、Oracle Database Freeの開発環境を用意しています。図書館向けの画面・業務処理、API・DBとの連携は今後実装予定です。
 
-![alt text](docs/assets/image.png)
+予約、購入希望の申請・承認、延滞確認のバッチは追加候補です。学習方針と未確定事項は[PROJECT_CONTEXT.md](docs/PROJECT_CONTEXT.md)にまとめています。
+
+業務の流れと設計候補は、[イベントストーミング](docs/modeling/event-storming.md)と[ドメインモデル](docs/modeling/domain-model.md)にまとめています。
+
+以下は旧題材の仮画面です。
+
+![旧題材の部品・改訂一覧の仮画面](docs/assets/image.png)
 
 ## 前提条件
 
