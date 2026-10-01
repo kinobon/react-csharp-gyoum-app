@@ -11,10 +11,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "ag-grid-enterprise": "^36.2.0",
+    "antd": "^6.6.5",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
+    "@ant-design/cli": "^6.6.5",
     "@babel/core": "^7.29.7",
     "@rolldown/plugin-babel": "^0.2.3",
     "@types/babel__core": "^7.20.5",
