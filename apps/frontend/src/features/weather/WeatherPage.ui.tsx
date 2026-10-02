@@ -46,6 +46,10 @@ export function WeatherPageUI({
     { field: "概要" },
   ];
 
+  const overlayComponentParams = {
+    noRows: { overlayText: "天気予報データがありません" },
+  };
+
   return (
     <main className={styles.page}>
       <title>天気予報 | 学習用アプリ</title>
@@ -86,7 +90,11 @@ export function WeatherPageUI({
       {forecasts !== undefined && (
         <AgGridProvider modules={modules}>
           <div style={{ height: "500px" }}>
-            <AgGridReact<WeatherForecastJa> rowData={rowData} columnDefs={colDefs} />
+            <AgGridReact<WeatherForecastJa>
+              rowData={rowData}
+              columnDefs={colDefs}
+              overlayComponentParams={overlayComponentParams}
+            />
           </div>
         </AgGridProvider>
       )}
