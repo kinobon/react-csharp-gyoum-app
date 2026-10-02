@@ -1,3 +1,4 @@
 <Solution>
+  <Project Path="FactoryTraining.Api.Tests/FactoryTraining.Api.Tests.csproj" Id="16da33db-0da0-4cc9-ba79-e85703f88ce3" />
   <Project Path="FactoryTraining.Api/FactoryTraining.Api.csproj" />
 </Solution>
