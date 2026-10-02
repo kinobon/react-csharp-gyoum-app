@@ -1,8 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Alert, Button, Table } from "antd";
-import type { TableProps } from "antd";
+import { Alert, Button } from "antd";
 import type { WeatherForecast } from "../../api/generated/models";
 import styles from "./weather.module.css";
+import { AgGridProvider, AgGridReact } from "ag-grid-react";
+import { AllCommunityModule, type ColDef } from "ag-grid-community";
 
 interface WeatherPageUIProps {
   forecasts: WeatherForecast[] | undefined;
@@ -13,22 +14,14 @@ interface WeatherPageUIProps {
   onRefresh: () => void;
 }
 
-const columns: TableProps<WeatherForecast>["columns"] = [
-  { title: "日付", dataIndex: "date", key: "date" },
-  {
-    title: "気温（℃）",
-    key: "temperatureC",
-    align: "right",
-    render: (_, row) => row.temperatureC ?? "—",
-  },
-  {
-    title: "気温（℉）",
-    key: "temperatureF",
-    align: "right",
-    render: (_, row) => row.temperatureF ?? "—",
-  },
-  { title: "概要", key: "summary", render: (_, row) => row.summary ?? "—" },
-];
+const modules = [AllCommunityModule];
+
+interface WeatherForecastJa {
+  日付?: WeatherForecast["date"];
+  "気温（℃）"?: WeatherForecast["temperatureC"];
+  "気温（℉）"?: WeatherForecast["temperatureF"];
+  概要?: WeatherForecast["summary"];
+}
 
 export function WeatherPageUI({
   forecasts,
@@ -38,6 +31,25 @@ export function WeatherPageUI({
   isPaused,
   onRefresh,
 }: WeatherPageUIProps) {
+  const rowData: WeatherForecastJa[] =
+    forecasts?.map((f) => ({
+      日付: f.date ?? "-",
+      "気温（℃）": f.temperatureC ?? "-",
+      "気温（℉）": f.temperatureF ?? "-",
+      概要: f.summary ?? "-",
+    })) ?? [];
+
+  const colDefs: ColDef<WeatherForecastJa>[] = [
+    { field: "日付" },
+    { field: "気温（℃）" },
+    { field: "気温（℉）" },
+    { field: "概要" },
+  ];
+
+  const overlayComponentParams = {
+    noRows: { overlayText: "天気予報データがありません" },
+  };
+
   return (
     <main className={styles.page}>
       <title>天気予報 | 学習用アプリ</title>
@@ -76,15 +88,15 @@ export function WeatherPageUI({
               : null}
       </div>
       {forecasts !== undefined && (
-        <Table<WeatherForecast>
-          aria-label="天気予報一覧"
-          columns={columns}
-          dataSource={forecasts}
-          rowKey="date"
-          pagination={false}
-          scroll={{ x: 520 }}
-          locale={{ emptyText: "予報データがありません" }}
-        />
+        <AgGridProvider modules={modules}>
+          <div style={{ height: "500px" }}>
+            <AgGridReact<WeatherForecastJa>
+              rowData={rowData}
+              columnDefs={colDefs}
+              overlayComponentParams={overlayComponentParams}
+            />
+          </div>
+        </AgGridProvider>
       )}
       {isPending && !isFetching && !isPaused && <p>予報の取得を待っています。</p>}
     </main>
