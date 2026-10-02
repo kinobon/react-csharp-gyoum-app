@@ -3,7 +3,6 @@ import { Alert, Button } from "antd";
 import type { WeatherForecast } from "../../api/generated/models";
 import styles from "./weather.module.css";
 import { AgGridProvider, AgGridReact } from "ag-grid-react";
-import { useState } from "react";
 import { AllCommunityModule, type ColDef } from "ag-grid-community";
 
 interface WeatherPageUIProps {
@@ -17,6 +16,13 @@ interface WeatherPageUIProps {
 
 const modules = [AllCommunityModule];
 
+interface WeatherForecastJa {
+  日付?: WeatherForecast["date"];
+  "気温（℃）"?: WeatherForecast["temperatureC"];
+  "気温（℉）"?: WeatherForecast["temperatureF"];
+  概要?: WeatherForecast["summary"];
+}
+
 export function WeatherPageUI({
   forecasts,
   isPending,
@@ -25,19 +31,19 @@ export function WeatherPageUI({
   isPaused,
   onRefresh,
 }: WeatherPageUIProps) {
-  const rowData: WeatherForecast[] =
+  const rowData: WeatherForecastJa[] =
     forecasts?.map((f) => ({
-      date: f.date,
-      temperatureC: f.temperatureC,
-      temperatureF: f.temperatureF,
-      summar: f.summary,
+      日付: f.date,
+      "気温（℃）": f.temperatureC,
+      "気温（℉）": f.temperatureF,
+      概要: f.summary,
     })) ?? [];
 
-  const colDefs: ColDef<WeatherForecast>[] = [
-    { field: "date" },
-    { field: "temperatureC" },
-    { field: "temperatureF" },
-    { field: "summary" },
+  const colDefs: ColDef<WeatherForecastJa>[] = [
+    { field: "日付" },
+    { field: "気温（℃）" },
+    { field: "気温（℉）" },
+    { field: "概要" },
   ];
 
   return (
@@ -80,7 +86,7 @@ export function WeatherPageUI({
       {forecasts !== undefined && (
         <AgGridProvider modules={modules}>
           <div style={{ height: "500" }}>
-            <AgGridReact<WeatherForecast> rowData={rowData} columnDefs={colDefs} />
+            <AgGridReact<WeatherForecastJa> rowData={rowData} columnDefs={colDefs} />
           </div>
         </AgGridProvider>
       )}
