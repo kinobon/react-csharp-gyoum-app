@@ -85,7 +85,7 @@ export function WeatherPageUI({
       </div>
       {forecasts !== undefined && (
         <AgGridProvider modules={modules}>
-          <div style={{ height: "500" }}>
+          <div style={{ height: "500px" }}>
             <AgGridReact<WeatherForecastJa> rowData={rowData} columnDefs={colDefs} />
           </div>
         </AgGridProvider>
