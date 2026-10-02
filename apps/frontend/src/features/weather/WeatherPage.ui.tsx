@@ -33,10 +33,10 @@ export function WeatherPageUI({
 }: WeatherPageUIProps) {
   const rowData: WeatherForecastJa[] =
     forecasts?.map((f) => ({
-      日付: f.date,
-      "気温（℃）": f.temperatureC,
-      "気温（℉）": f.temperatureF,
-      概要: f.summary,
+      日付: f.date ?? "-",
+      "気温（℃）": f.temperatureC ?? "-",
+      "気温（℉）": f.temperatureF ?? "-",
+      概要: f.summary ?? "-",
     })) ?? [];
 
   const colDefs: ColDef<WeatherForecastJa>[] = [
