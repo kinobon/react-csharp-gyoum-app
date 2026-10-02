@@ -16,7 +16,7 @@ AG Grid・C#・Oracleを使い、図書館の蔵書・貸出管理を題材に�
 
 - Node.js：24以上
 - pnpm
-- .NET 10 SDK（APIを起動する場合）
+- .NET 10 SDK（APIの起動・バックエンドのテスト実行に必要）
 - Docker CLI・Docker Composeが利用できる環境
   - 現在はWindows 11のRancher Desktopで、コンテナエンジンに`dockerd (moby)`を使用しています。
   - Oracleを起動する前にRancher Desktopを起動してください。
@@ -79,6 +79,25 @@ DBを停止するときは、リポジトリのルートで実行します。
 ```powershell
 docker compose down
 ```
+
+## バックエンドのテスト
+
+`FactoryTraining.Api.Tests` に、xUnitを使ったWeatherForecast APIのテストがあります。
+`WebApplicationFactory` がテスト内でAPIを起動するため、APIやOracleを事前に起動する必要はありません。
+
+### .NET CLI
+
+リポジトリのルートで実行します。
+
+```powershell
+dotnet test apps/backend/FactoryTraining/FactoryTraining.Api.Tests/FactoryTraining.Api.Tests.csproj
+```
+
+### Visual Studio
+
+1. `apps/backend/FactoryTraining/FactoryTraining.slnx` を開きます。.NET 10に対応したVisual Studioが必要です。
+2. ソリューションをビルドし、［テスト］→［テスト エクスプローラー］を開きます。
+3. 対象テストを右クリックして［実行］を選びます。［デバッグ］を選ぶと、テストやControllerのブレークポイントで停止できます。
 
 ## 構成
 
